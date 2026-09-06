@@ -104,6 +104,12 @@ export default function Home() {
         <p>Specialty Coffee &amp; Matcha<br />Hauptstraße 24 · 32609 Hüllhorst</p>
         <div><a href={instagram} target="_blank" rel="noreferrer">Instagram</a><a href={localPath('/impressum')}>Impressum</a><a href={localPath('/datenschutz')}>Datenschutz</a></div>
       </footer>
+
+      <nav className="mobile-dock" aria-label="Schnellzugriff">
+        <a href={directions} target="_blank" rel="noreferrer"><MapPin size={18} aria-hidden="true" /><span>Route</span></a>
+        <a href="tel:+4915568265353"><Phone size={18} aria-hidden="true" /><span>Anrufen</span></a>
+        <a href={instagram} target="_blank" rel="noreferrer"><Camera size={18} aria-hidden="true" /><span>Instagram</span></a>
+      </nav>
     </main>
   );
 }
