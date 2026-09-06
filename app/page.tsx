@@ -95,7 +95,7 @@ export default function Home() {
         <div className="visit-details">
           <a className="visit-card" href={directions} target="_blank" rel="noreferrer"><MapPin size={21} /><div><p className="detail-label">Adresse</p><p>Hauptstraße 24<br />32609 Hüllhorst</p></div><ArrowUpRight size={19} /></a>
           <a className="visit-card" href="tel:+4915568265353"><Phone size={21} /><div><p className="detail-label">Telefon</p><p>01556 8265353</p></div><ArrowUpRight size={19} /></a>
-          <div className="hours-card"><Clock3 size={21} /><div><p className="detail-label">Öffnungszeiten</p><dl><div><dt>Mo–Mi</dt><dd>10–17 Uhr</dd></div><div><dt>Do</dt><dd>geschlossen</dd></div><div><dt>Fr</dt><dd>10–18 Uhr</dd></div><div><dt>Sa–So</dt><dd>11–16 Uhr</dd></div></dl></div></div>
+          <div className="hours-card"><Clock3 size={21} /><div><p className="detail-label">Öffnungszeiten</p><dl><div><dt>Mo–Di</dt><dd>geschlossen</dd></div><div><dt>Mi–Fr</dt><dd>11–18 Uhr</dd></div><div><dt>Sa–So</dt><dd>12–17 Uhr</dd></div></dl></div></div>
         </div>
       </section>
 
