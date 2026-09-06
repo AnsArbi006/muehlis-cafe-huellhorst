@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline { --font-sans: Arial, Helvetica, sans-serif; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #f7f6f2; color: #171817; font-family: Arial, Helvetica, sans-serif; }
+a { text-decoration: none; }
+.brand { font-family: 'Brush Script MT', 'Segoe Script', cursive; font-weight: 400; letter-spacing: -0.08em; }
+.eyebrow { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+::selection { background: #dce668; color: #171817; }
