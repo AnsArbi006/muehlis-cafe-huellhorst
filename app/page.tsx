@@ -26,7 +26,7 @@ function Logo({ inverted = false }: { inverted?: boolean }) {
 
 export default function Home() {
   return (
-    <main>
+    <main id="content">
       <header className="site-header">
         <a href="#top" aria-label="Mühlis Startseite"><Logo /></a>
         <nav aria-label="Hauptnavigation" className="site-nav">
@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       <section className="gallery-section" aria-label="Einblicke bei Mühlis">
-        <div className="gallery-grid">
+        <div className="gallery-grid" role="region" aria-label="Mühlis Galerie" tabIndex={0}>
           {gallery.map((image) => <figure key={image.src} className={image.className}><img src={image.src} alt={image.alt} /></figure>)}
         </div>
         <p className="gallery-caption">Coffee, Matcha &amp; something sweet.</p>
@@ -81,7 +81,6 @@ export default function Home() {
         <div className="reviews-heading"><p className="kicker">Stimmen aus Hüllhorst</p><h2>What they<br /><em>say.</em></h2></div>
         <div className="rating-card">
           <p className="rating-number">4,9<span>/5</span></p>
-          <div className="stars" aria-label="4,9 von 5 Sternen">★★★★★</div>
           <p>Google · 61 Rezensionen</p>
           <p className="rating-note">Stand: September 2026</p>
           <a href={googleReviews} target="_blank" rel="noreferrer" className="text-link">Alle Rezensionen <ArrowUpRight size={17} /></a>
