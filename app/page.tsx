@@ -1,270 +1,102 @@
-import { ArrowUpRight, Camera, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRight, Camera, Clock3, MapPin, Phone } from 'lucide-react';
 
 const instagram = 'https://www.instagram.com/cafemuehlis/?hl=de';
-const directions =
-  'https://www.google.com/maps/place/Hauptstra%C3%9Fe+24,+32609+H%C3%BCllhorst';
+const directions = 'https://www.google.com/maps/place/Hauptstra%C3%9Fe+24,+32609+H%C3%BCllhorst';
+const googleReviews = 'https://www.google.com/search?q=M%C3%BChlis+H%C3%BCllhorst+Rezensionen';
 
-const highlights = [
-  {
-    eyebrow: '01 / Matcha',
-    title: 'Green mood.',
-    text: 'Eiskalt, cremig und genau der kleine Farbflash für deinen Tag.',
-    image: '/images/matcha-cookie.jpg',
-    position: 'object-[58%_center]',
-  },
-  {
-    eyebrow: '02 / Sweets',
-    title: 'Made for a treat.',
-    text: 'Cookies, Zimtschnecken und süße Lieblingsmomente – frisch für deine Pause.',
-    image: '/images/cookie-coffee.jpg',
-    position: 'object-center',
-  },
-  {
-    eyebrow: '03 / Coffee',
-    title: 'Good coffee, good people.',
-    text: 'Kaffeespezialitäten, ein offener Tresen und ein Platz, an dem man gern hängen bleibt.',
-    image: '/images/counter.jpg',
-    position: 'object-center',
-  },
+const gallery = [
+  { src: '/images/matcha-cookie.jpg', alt: 'Iced Matcha Latte und Cookie', className: 'gallery-matcha' },
+  { src: '/images/counter.jpg', alt: 'Der helle Tresen von Mühlis', className: 'gallery-counter' },
+  { src: '/images/strawberry-pastry.jpg', alt: 'Süßes Gebäck mit Erdbeeren', className: 'gallery-sweet' },
 ];
+
+const reviews = [
+  { name: 'Selina Ingram', quote: '„Die Zimtschnecken und Getränke auch top.“' },
+  { name: 'Jannes', quote: '„Kleines, neu eröffnetes Café in Hüllhorst mit richtig viel Charme.“' },
+  { name: 'Kerstin Kerkhoff', quote: '„Die Atmosphäre ist super gemütlich und modern.“' },
+];
+
+function Logo({ inverted = false }: { inverted?: boolean }) {
+  return <img src="/images/muehlis-logo.png" alt="Mühlis" className={`logo ${inverted ? 'logo-inverted' : ''}`} />;
+}
 
 export default function Home() {
   return (
     <main>
-      <section className="hero relative min-h-[770px] overflow-hidden bg-[#171817] text-white">
-        <img
-          src="/images/exterior.jpg"
-          alt="Außenansicht von Mühlis in Hüllhorst"
-          className="absolute inset-0 h-full w-full object-cover object-[60%_center] opacity-80"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(14,15,14,.86)_0%,rgba(14,15,14,.62)_41%,rgba(14,15,14,.15)_100%)]" />
-        <nav className="relative mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 py-6 sm:px-10 lg:px-14">
-          <a
-            href="#top"
-            aria-label="Mühlis Startseite"
-            className="brand text-4xl leading-none sm:text-5xl"
-          >
-            Mühlis
-          </a>
-          <div className="hidden items-center gap-8 text-sm font-medium text-white/80 md:flex">
-            <a className="transition hover:text-white" href="#specials">
-              Unser Café
-            </a>
-            <a className="transition hover:text-white" href="#besuchen">
-              Besuchen
-            </a>
-          </div>
-          <a
-            href={instagram}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/35 px-4 py-2 text-sm font-medium transition hover:bg-white hover:text-[#171817]"
-          >
-            Instagram <ArrowUpRight className="h-4 w-4" />
-          </a>
+      <header className="site-header">
+        <a href="#top" aria-label="Mühlis Startseite"><Logo /></a>
+        <nav aria-label="Hauptnavigation" className="site-nav">
+          <a href="#cafe">Café</a>
+          <a href="#stimmen">Stimmen</a>
+          <a href="#besuch">Besuch</a>
         </nav>
-        <div
-          id="top"
-          className="relative mx-auto flex min-h-[665px] w-full max-w-[1440px] flex-col justify-end px-6 pb-14 sm:px-10 sm:pb-20 lg:px-14"
-        >
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.26em] text-[#bcda53]">
-            Café &amp; Concept Store · Hüllhorst
-          </p>
-          <h1 className="max-w-4xl text-[clamp(3.5rem,9vw,9.5rem)] font-semibold leading-[.82] tracking-[-.075em]">
-            Born in a<br />
-            <span className="font-light italic tracking-[-.1em]">Library.</span>
-          </h1>
-          <div className="mt-9 flex max-w-md flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-            <p className="text-base leading-relaxed text-white/80">
-              Kaffee, Matcha und Süßes für deine kleine Auszeit – mitten in
-              Hüllhorst.
-            </p>
-            <a
-              href="#besuchen"
-              className="inline-flex shrink-0 items-center gap-2 font-medium text-[#bcda53] transition hover:text-white"
-            >
-              Komm vorbei <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
+        <a href={instagram} target="_blank" rel="noreferrer" className="nav-link">Instagram <ArrowUpRight size={15} /></a>
+      </header>
+
+      <section id="top" className="hero-editorial">
+        <div className="hero-copy">
+          <p className="kicker">Hüllhorst · Hauptstraße 24</p>
+          <h1>Specialty Coffee<br /><em>&amp; Matcha.</em></h1>
+          <p className="hero-intro">Ein Ort für guten Kaffee, Matcha und kleine Pausen. Komm vorbei, wie du bist.</p>
+          <a href="#besuch" className="text-link">Besuch planen <ArrowUpRight size={17} /></a>
+        </div>
+        <figure className="hero-image"><img src="/images/exterior.jpg" alt="Außenansicht des Café Mühlis in Hüllhorst" /></figure>
+      </section>
+
+      <section id="cafe" className="intro-section">
+        <div className="section-mark">01</div>
+        <div>
+          <p className="kicker">Großstadt-Vibes im Dorf</p>
+          <h2>Gemacht für<br />deine <em>Auszeit.</em></h2>
+        </div>
+        <p className="intro-text">Mühlis verbindet hochwertige Kaffeespezialitäten, cremige Matcha-Variationen und frische süße Teilchen mit einem klaren, persönlichen Raumgefühl.</p>
+      </section>
+
+      <section className="gallery-section" aria-label="Einblicke bei Mühlis">
+        <div className="gallery-grid">
+          {gallery.map((image) => <figure key={image.src} className={image.className}><img src={image.src} alt={image.alt} /></figure>)}
+        </div>
+        <p className="gallery-caption">Coffee, Matcha &amp; something sweet.</p>
+      </section>
+
+      <section className="story-section">
+        <div className="story-photo"><img src="/images/founder.jpg" alt="Nils Mühlenweg im Café Mühlis" /></div>
+        <div className="story-copy">
+          <p className="kicker">Über Mühlis</p>
+          <h2>Ein Café, das<br /><em>bleiben lässt.</em></h2>
+          <p>Ein kurzer Espresso, ein Matcha mit Freund:innen oder ein süßer Moment zwischendurch: Mühlis ist ein unkomplizierter Treffpunkt mitten in Hüllhorst.</p>
+          <p>Mit Liebe zum Detail, guten Produkten und Platz für alle, die kurz ankommen möchten.</p>
+          <a href={instagram} target="_blank" rel="noreferrer" className="text-link">Mehr auf Instagram <Camera size={17} /></a>
         </div>
       </section>
 
-      <section
-        id="specials"
-        className="bg-[#eeefeb] px-6 py-20 sm:px-10 sm:py-28 lg:px-14"
-      >
-        <div className="mx-auto max-w-[1440px]">
-          <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow">Deine kleine Auszeit</p>
-              <h2 className="mt-3 max-w-3xl text-4xl font-semibold leading-[.95] tracking-[-.055em] text-[#171817] sm:text-6xl">
-                Lieblingsdrinks treffen auf süße Versuchungen.
-              </h2>
-            </div>
-            <p className="max-w-xs text-sm leading-relaxed text-[#60645e]">
-              Mit viel Liebe ausgesucht und täglich anders – schau vorbei und
-              entdecke deinen Favoriten.
-            </p>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {highlights.map((item) => (
-              <article
-                key={item.title}
-                className="group relative min-h-[500px] overflow-hidden rounded-[1.65rem] bg-[#292c27] text-white"
-              >
-                <img
-                  src={item.image}
-                  alt=""
-                  className={`absolute inset-0 h-full w-full object-cover ${item.position} transition duration-700 group-hover:scale-105`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/5" />
-                <div className="relative flex h-full min-h-[500px] flex-col justify-between p-7">
-                  <p className="text-xs font-semibold uppercase tracking-[.2em] text-white/85">
-                    {item.eyebrow}
-                  </p>
-                  <div>
-                    <h3 className="text-4xl font-semibold tracking-[-.055em]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/80">
-                      {item.text}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+      <section id="stimmen" className="reviews-section">
+        <div className="reviews-heading"><p className="kicker">Stimmen aus Hüllhorst</p><h2>What they<br /><em>say.</em></h2></div>
+        <div className="rating-card">
+          <p className="rating-number">4,9<span>/5</span></p>
+          <div className="stars" aria-label="4,9 von 5 Sternen">★★★★★</div>
+          <p>Google · 61 Rezensionen</p>
+          <p className="rating-note">Stand: September 2026</p>
+          <a href={googleReviews} target="_blank" rel="noreferrer" className="text-link">Alle Rezensionen <ArrowUpRight size={17} /></a>
+        </div>
+        <div className="review-list">
+          {reviews.map((review) => <blockquote key={review.name}><p>{review.quote}</p><footer>— {review.name}, Google</footer></blockquote>)}
         </div>
       </section>
 
-      <section className="bg-[#171817] px-6 py-20 text-white sm:px-10 sm:py-28 lg:px-14">
-        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
-          <div className="relative">
-            <img
-              src="/images/founder.jpg"
-              alt="Nils Mühlenweg im Café Mühlis"
-              className="aspect-[1.45/1] w-full rounded-[1.65rem] object-cover object-top"
-            />
-            <p className="absolute bottom-5 left-5 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[.14em] text-[#171817]">
-              Mühlis, Hüllhorst
-            </p>
-          </div>
-          <div className="lg:pl-8">
-            <p className="eyebrow text-[#bcda53]">Ganz persönlich</p>
-            <h2 className="mt-4 text-4xl font-semibold leading-[.95] tracking-[-.055em] sm:text-6xl">
-              Ein Ort für gute Gespräche und noch bessere Pausen.
-            </h2>
-            <p className="mt-7 max-w-lg text-lg leading-relaxed text-white/70">
-              Mühlis ist der Treffpunkt für Kaffee-Liebhaber:innen, Matcha-Fans
-              und alle, die zwischen Alltag und Wochenende kurz genießen wollen.
-            </p>
-            <a
-              href={instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-9 inline-flex items-center gap-2 text-sm font-semibold text-[#bcda53] transition hover:text-white"
-            >
-              Mehr von Mühlis auf Instagram <Camera className="h-4 w-4" />
-            </a>
-          </div>
+      <section id="besuch" className="visit-section">
+        <div className="visit-heading"><p className="kicker">Komm vorbei</p><h2>See you at<br /><em>Mühlis.</em></h2><p>Für tagesaktuelle Specials und kurzfristige Änderungen schau gern bei Instagram vorbei.</p></div>
+        <div className="visit-details">
+          <a className="visit-card" href={directions} target="_blank" rel="noreferrer"><MapPin size={21} /><div><p className="detail-label">Adresse</p><p>Hauptstraße 24<br />32609 Hüllhorst</p></div><ArrowUpRight size={19} /></a>
+          <a className="visit-card" href="tel:+4915568265353"><Phone size={21} /><div><p className="detail-label">Telefon</p><p>01556 8265353</p></div><ArrowUpRight size={19} /></a>
+          <div className="hours-card"><Clock3 size={21} /><div><p className="detail-label">Öffnungszeiten</p><dl><div><dt>Mo–Mi</dt><dd>10–17 Uhr</dd></div><div><dt>Do</dt><dd>geschlossen</dd></div><div><dt>Fr</dt><dd>10–18 Uhr</dd></div><div><dt>Sa–So</dt><dd>11–16 Uhr</dd></div></dl></div></div>
         </div>
       </section>
 
-      <section className="grid bg-[#dce668] md:grid-cols-2">
-        <img
-          src="/images/cookies.jpg"
-          alt="Frisch dekorierte Cookies bei Mühlis"
-          className="h-[470px] w-full object-cover md:h-full"
-        />
-        <div className="flex min-h-[470px] flex-col justify-between p-8 text-[#171817] sm:p-12 lg:p-16">
-          <p className="eyebrow">Fresh from the counter</p>
-          <div>
-            <h2 className="max-w-lg text-5xl font-semibold leading-[.9] tracking-[-.065em] sm:text-7xl">
-              A little sweet never hurt.
-            </h2>
-            <p className="mt-7 max-w-md text-base leading-relaxed text-[#404439]">
-              Ob Cookie, Zimtschnecke oder saisonales Special: Bei uns gibt’s
-              immer einen Grund, noch ein bisschen zu bleiben.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="besuchen"
-        className="bg-[#f7f6f2] px-6 py-20 sm:px-10 sm:py-28 lg:px-14"
-      >
-        <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[.95fr_1.05fr]">
-          <div>
-            <p className="eyebrow">Besuch uns</p>
-            <h2 className="mt-3 text-5xl font-semibold leading-[.9] tracking-[-.065em] text-[#171817] sm:text-7xl">
-              See you at
-              <br />
-              <span className="italic font-light">Mühlis.</span>
-            </h2>
-            <p className="mt-7 max-w-sm text-base leading-relaxed text-[#60645e]">
-              Du findest uns im Herzen von Hüllhorst. Aktuelle Öffnungszeiten
-              und Specials teilen wir auf Instagram.
-            </p>
-          </div>
-          <div className="grid gap-px overflow-hidden rounded-[1.65rem] border border-[#d7d8d1] bg-[#d7d8d1] sm:grid-cols-2">
-            <a
-              href={directions}
-              target="_blank"
-              rel="noreferrer"
-              className="group bg-white p-7 transition hover:bg-[#dce668] sm:p-9"
-            >
-              <MapPin className="h-6 w-6 text-[#171817]" />
-              <p className="mt-12 text-xs font-semibold uppercase tracking-[.16em] text-[#70736b]">
-                Adresse
-              </p>
-              <p className="mt-2 text-xl font-semibold tracking-[-.03em] text-[#171817]">
-                Hauptstraße 24
-                <br />
-                32609 Hüllhorst
-              </p>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">
-                Route starten <ArrowUpRight className="h-4 w-4" />
-              </span>
-            </a>
-            <a
-              href="tel:+4915568265353"
-              className="group bg-white p-7 transition hover:bg-[#dce668] sm:p-9"
-            >
-              <Phone className="h-6 w-6 text-[#171817]" />
-              <p className="mt-12 text-xs font-semibold uppercase tracking-[.16em] text-[#70736b]">
-                Telefon
-              </p>
-              <p className="mt-2 text-xl font-semibold tracking-[-.03em] text-[#171817]">
-                01556
-                <br />
-                8265353
-              </p>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">
-                Jetzt anrufen <ArrowUpRight className="h-4 w-4" />
-              </span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-[#171817] px-6 py-8 text-white sm:px-10 lg:px-14">
-        <div className="mx-auto flex max-w-[1440px] flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <span className="brand text-4xl">Mühlis</span>
-          <div className="flex gap-5 text-sm text-white/65">
-            <a
-              href={instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-white"
-            >
-              Instagram
-            </a>
-            <a href="tel:+4915568265353" className="hover:text-white">
-              Telefon
-            </a>
-          </div>
-        </div>
+      <footer className="site-footer">
+        <Logo inverted />
+        <p>Specialty Coffee &amp; Matcha<br />Hauptstraße 24 · 32609 Hüllhorst</p>
+        <div><a href={instagram} target="_blank" rel="noreferrer">Instagram</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div>
       </footer>
     </main>
   );

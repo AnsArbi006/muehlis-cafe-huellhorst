@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Mühlis – Café & Concept Store in Hüllhorst',
-  description: 'Kaffee, Matcha und süße Auszeiten im Herzen von Hüllhorst.',
+  description: 'Specialty Coffee, Matcha und süße Auszeiten im Herzen von Hüllhorst.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
