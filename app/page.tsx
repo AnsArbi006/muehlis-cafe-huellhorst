@@ -1,13 +1,17 @@
 import { ArrowUpRight, Camera, Clock3, MapPin, Phone } from 'lucide-react';
 
+export const dynamic = 'force-static';
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const localPath = (path: string) => `${basePath}${path}`;
 const instagram = 'https://www.instagram.com/cafemuehlis/?hl=de';
 const directions = 'https://www.google.com/maps/place/Hauptstra%C3%9Fe+24,+32609+H%C3%BCllhorst';
 const googleReviews = 'https://www.google.com/search?q=M%C3%BChlis+H%C3%BCllhorst+Rezensionen';
 
 const gallery = [
-  { src: '/images/matcha-cookie.jpg', alt: 'Iced Matcha Latte und Cookie', className: 'gallery-matcha' },
-  { src: '/images/counter.jpg', alt: 'Der helle Tresen von Mühlis', className: 'gallery-counter' },
-  { src: '/images/strawberry-pastry.jpg', alt: 'Süßes Gebäck mit Erdbeeren', className: 'gallery-sweet' },
+  { src: localPath('/images/matcha-cookie.jpg'), alt: 'Iced Matcha Latte und Cookie', className: 'gallery-matcha' },
+  { src: localPath('/images/counter.jpg'), alt: 'Der helle Tresen von Mühlis', className: 'gallery-counter' },
+  { src: localPath('/images/strawberry-pastry.jpg'), alt: 'Süßes Gebäck mit Erdbeeren', className: 'gallery-sweet' },
 ];
 
 const reviews = [
@@ -17,7 +21,7 @@ const reviews = [
 ];
 
 function Logo({ inverted = false }: { inverted?: boolean }) {
-  return <img src="/images/muehlis-logo.png" alt="Mühlis" className={`logo ${inverted ? 'logo-inverted' : ''}`} />;
+  return <img src={localPath('/images/muehlis-logo.png')} alt="Mühlis" className={`logo ${inverted ? 'logo-inverted' : ''}`} />;
 }
 
 export default function Home() {
@@ -43,7 +47,7 @@ export default function Home() {
             <a href="#besuch" className="text-link">Öffnungszeiten <ArrowUpRight size={17} /></a>
           </div>
         </div>
-        <figure className="hero-image"><img src="/images/exterior.jpg" alt="Außenansicht des Café Mühlis in Hüllhorst" /></figure>
+        <figure className="hero-image"><img src={localPath('/images/exterior.jpg')} alt="Außenansicht des Café Mühlis in Hüllhorst" /></figure>
       </section>
 
       <section id="cafe" className="intro-section">
@@ -63,7 +67,7 @@ export default function Home() {
       </section>
 
       <section className="story-section">
-        <div className="story-photo"><img src="/images/founder.jpg" alt="Nils Mühlenweg im Café Mühlis" /></div>
+        <div className="story-photo"><img src={localPath('/images/founder.jpg')} alt="Nils Mühlenweg im Café Mühlis" /></div>
         <div className="story-copy">
           <p className="kicker">Über Mühlis</p>
           <h2>Ein Café, das<br /><em>bleiben lässt.</em></h2>
@@ -99,7 +103,7 @@ export default function Home() {
       <footer className="site-footer">
         <Logo inverted />
         <p>Specialty Coffee &amp; Matcha<br />Hauptstraße 24 · 32609 Hüllhorst</p>
-        <div><a href={instagram} target="_blank" rel="noreferrer">Instagram</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div>
+        <div><a href={instagram} target="_blank" rel="noreferrer">Instagram</a><a href={localPath('/impressum')}>Impressum</a><a href={localPath('/datenschutz')}>Datenschutz</a></div>
       </footer>
     </main>
   );
