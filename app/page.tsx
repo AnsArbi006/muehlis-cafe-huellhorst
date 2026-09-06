@@ -38,7 +38,10 @@ export default function Home() {
           <p className="kicker">Hüllhorst · Hauptstraße 24</p>
           <h1>Specialty Coffee<br /><em>&amp; Matcha.</em></h1>
           <p className="hero-intro">Ein Ort für guten Kaffee, Matcha und kleine Pausen. Komm vorbei, wie du bist.</p>
-          <a href="#besuch" className="text-link">Besuch planen <ArrowUpRight size={17} /></a>
+          <div className="hero-actions">
+            <a href={directions} target="_blank" rel="noreferrer" className="primary-action">Route öffnen <MapPin size={17} /></a>
+            <a href="#besuch" className="text-link">Öffnungszeiten <ArrowUpRight size={17} /></a>
+          </div>
         </div>
         <figure className="hero-image"><img src="/images/exterior.jpg" alt="Außenansicht des Café Mühlis in Hüllhorst" /></figure>
       </section>
